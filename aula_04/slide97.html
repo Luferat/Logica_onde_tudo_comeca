@@ -1,0 +1,22 @@
+<script>
+    /*
+    Slide 97:
+    Refazendo o exemplo de algoritmo de aninhamento de `if` usando a condição composta. 
+    */
+
+    var num1, num2, num3, maior;
+
+    num1 = +prompt('Entre com o Primeiro Valor:');
+    num2 = +prompt('Entre com o Segundo Valor:');
+    num3 = +prompt('Entre com o Terceiro Valor:');
+
+    if ((num1 > num2) && (num1 > num3)) {
+        maior = num1;
+    } else if (num2 > num3) {
+        maior = num2;
+    } else {
+        maior = num3;
+    }
+
+    console.log("O maior valor entre " + num1 + ", " + num2 + " e " + num3 + " é: " + maior);
+</script>

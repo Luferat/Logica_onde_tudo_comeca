@@ -1,0 +1,26 @@
+<script>
+    /*
+    Slide 93:
+    O exemplo de algoritmo que imprime o maior de três valores lidos, sem levar em consideração a leitura/entrada de valores iguais. 
+    */
+
+    var num1, num2, num3, maior;
+
+    num1 = parseInt(prompt('Entre com o Primeiro Valor:'));
+    num2 = parseInt(prompt('Entre com o Segundo Valor:'));
+    num3 = parseInt(prompt('Entre com o Terceiro Valor:'));
+
+    if (num1 > num2) {
+        if (num1 > num3) {
+            maior = num1;
+        } else {
+            maior = num3;
+        }
+    } else if (num2 > num3) {
+        maior = num2;
+    } else {
+        maior = num3;
+    }
+
+    console.log("O maior valor entre " + num1 + ", " + num2 + " e " + num3 + " é: " + maior);
+</script>
