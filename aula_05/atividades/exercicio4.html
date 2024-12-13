@@ -1,0 +1,26 @@
+<script>
+    /*
+    Melhore o algoritmo do exercício 1 para que solicite um novo 
+    número inteiro caso o número inserido seja inválido.
+    */
+
+    var naoValido = true
+
+    while (naoValido) {
+        var numero = parseInt(prompt('Digite um número inteiro:'))
+
+        // O ! (NOT) inverte a resposta da expressão
+        if (isNaN(numero)) {
+            alert('Insira um número inteiro válido!')
+        } else {
+            naoValido = false
+        }
+    }
+
+    if (numero % 2 === 0) {
+        document.write('O número ' + numero + ' é par!')
+    } else {
+        document.write('O número ' + numero + ' é ímpar!')
+    }
+
+</script>
