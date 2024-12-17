@@ -1,0 +1,22 @@
+<script>
+    /*
+    Escreva um programa que receba um array de números e retorne a média 
+    aritmética dos valores presentes no array.
+    */
+
+    // Array de exemplo
+    let numeros = [10, 5, 8, 20, 3];
+
+    // Acumulador da soma
+    let soma = 0;
+
+    // Itera e soma todos os valores do array
+    for (let i = 0; i < numeros.length; i++) {
+        soma += numeros[i];
+    }
+
+    // Extrai a média dos valores
+    let media = soma / numeros.length;
+
+    document.write("A média aritmética dos valores no array é: " + media);
+</script>
