@@ -1,0 +1,29 @@
+<script>
+    /*
+    Exercício 2:
+    Escreva um programa que receba um array de números e retorne o maior valor 
+    presente no array.
+    */
+
+    // Array de exemplo
+    let numeros = [10, 12, 3, 95, 104, 4, 1280, 0] // maior 104 | 6 itens
+
+    // Armazena o maior
+    let maior = numeros[0] // 10
+
+    // Usando `for` para iterar `numeros`
+    for (let i = 1; i < numeros.length; i++) { // i é 6
+
+        // Verifica se o valor atual é maior
+        if (numeros[i] > maior) {
+
+            // Se for, atribui o valor atual à `valor`
+            maior = numeros[i] // 104
+        }
+
+    }
+
+    // Exibe a saída
+    document.write(`O maior valor é ${maior}!`)
+
+</script>

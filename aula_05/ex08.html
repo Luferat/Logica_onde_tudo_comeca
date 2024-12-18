@@ -1,0 +1,32 @@
+<script>
+    /*
+    Exercício 8:
+    Crie um algoritmo que solicita ao usuário um número inteiro positivo e 
+    continua solicitando até que o usuário insira um número válido.
+    Quando um número válido é inserido, o algoritmo exibe a soma de todos os 
+    números de 1 até o número inserido. 
+    Use `do...while` na solução.
+    */
+
+    let numero;
+    let numeroValido = false;
+
+    // Laço para solicitar um número inteiro positivo válido do usuário
+    do {
+        numero = parseInt(prompt("Digite um número inteiro positivo:"));
+        if (!isNaN(numero) && numero > 0) {
+            numeroValido = true;
+        } else {
+            alert("Entrada inválida. Por favor, digite um número inteiro positivo.");
+        }
+    } while (!numeroValido);
+
+    // Cálculo da soma de todos os números de 1 até o número inserido
+    let soma = 0;
+    for (let i = 1; i <= numero; i++) {
+        soma += i;
+    }
+
+    // Exibição do resultado
+    document.write("A soma de todos os números de 1 até " + numero + " é " + soma + ".");
+</script>
