@@ -1,0 +1,118 @@
+<script>
+    // Inicializa variáveis, por exemplo, uma array com a coleção de times
+    let times = [];
+  
+    // Recebe os nomes dos times e adiciona o time na lista de times 
+    for (let i = 1; i <= 4; i++) {
+      let time = prompt(`Digite o nome do ${i}º time:`);
+      times.push(time);
+    }
+  
+    // Recebe resultados (gols) do jogo A entre dois primeiros times 
+    let jogoATime1 = parseInt(prompt(`Quantos gols o "${times[0]}" fez no jogo A?`));
+    let jogoATime2 = parseInt(prompt(`Quantos gols o "${times[1]}" fez no jogo A?`));
+  
+    // Recebe resultados (gols) do jogo B entre os dois outros times 
+    let jogoBTime1 = parseInt(prompt(`Quantos gols o "${times[2]}" fez no jogo B?`));
+    let jogoBTime2 = parseInt(prompt(`Quantos gols o "${times[3]}" fez no jogo B?`));
+  
+    // Calcula ganhador do jogo A 
+    let ganhadorA, perdedorA, saldoA;
+    if (jogoATime1 > jogoATime2) {
+      ganhadorA = times[0];
+      perdedorA = times[1];
+      saldoA = jogoATime1 - jogoATime2;
+    } else {
+      ganhadorA = times[1];
+      perdedorA = times[0];
+      saldoA = jogoATime2 - jogoATime1;
+    }
+  
+    // Calcula ganhador do jogo B 
+    let ganhadorB, perdedorB, saldoB;
+    if (jogoBTime1 > jogoBTime2) {
+      ganhadorB = times[2];
+      perdedorB = times[3];
+      saldoB = jogoBTime1 - jogoBTime2;
+    } else {
+      ganhadorB = times[3];
+      perdedorB = times[2];
+      saldoB = jogoBTime2 - jogoBTime1;
+    }
+  
+    // Recebe resultados (gols) da final entre os times ganhadores 
+    let finalTime1 = parseInt(prompt(`Quantos gols o "${ganhadorA}" fez no jogo final?`));
+    let finalTime2 = parseInt(prompt(`Quantos gols o "${ganhadorB}" fez no jogo final?`));
+  
+    // Calcula ganhador do campeonato 
+    let vencedor, vice;
+    if (finalTime1 > finalTime2) {
+      vencedor = ganhadorA;
+      vice = ganhadorB;
+    } else {
+      vencedor = ganhadorB;
+      vice = ganhadorA;
+    }
+  
+    // Calcula terceiro e quarto colocados com base no saldo de gols
+    let terceiro, quarto;
+    if (saldoA > saldoB) {
+      terceiro = perdedorA;
+      quarto = perdedorB;
+    } else {
+      terceiro = perdedorB;
+      quarto = perdedorA;
+    }
+  
+    // Recebe dados da receita (valor do ingresso, total de pagantes e de não pagantes)
+    let ingresso = parseFloat(prompt(`Valor do ingresso em R$:`));
+    let pagantes = parseInt(prompt(`Total de pagantes no campeonato:`));
+    let naoPagantes = parseInt(prompt(`Total de não pagantes no campeonato:`));
+  
+    // Calcula público total
+    let publicoTotal = pagantes + naoPagantes;
+  
+    // Calcula receita total
+    let receitaTotal = (ingresso * pagantes).toFixed(2);
+  
+    // Calcula prémios conforme colocação
+    let premio1 = (receitaTotal * 0.5).toFixed(2);
+    let premio2 = (receitaTotal * 0.3).toFixed(2);
+    let premio3 = (receitaTotal * 0.1).toFixed(2);
+    let premio4 = (receitaTotal * 0.1).toFixed(2);
+  
+    // Exibe resultados no HTML do navegador 
+    document.write(`
+  <pre style="font-family: arial">
+    
+  Primeira rodada
+  
+      Partida A: ${times[0]} (${jogoATime1}) x ${times[1]} (${jogoATime2})
+      Vencedor: ${ganhadorA}
+  
+      Partida B: ${times[2]} (${jogoBTime1}) x ${times[3]} (${jogoBTime2})
+      Vencedor: ${ganhadorB}
+  
+  Partida final
+  
+      ${ganhadorA} (${finalTime1}) x ${ganhadorB} (${finalTime2})
+      Vencedor: ${vencedor}
+  
+  Receita
+  
+      Público total: ${publicoTotal}
+      Pagantes: ${pagantes}
+      Não pagantes: ${naoPagantes}
+      Receita total: R$ ${receitaTotal}
+  
+  Premiação:
+  
+      Vencedor: R$ ${premio1} (${vencedor})
+      Vice: R$ ${premio2} (${vice})
+      Terceiro: R$ ${premio3} (${terceiro})
+      Quarto: R$ ${premio4} (${quarto})
+  
+  </pre>
+    `);
+  
+  </script>
