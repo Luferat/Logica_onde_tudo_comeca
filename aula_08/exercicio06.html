@@ -1,0 +1,21 @@
+<script>
+    /*
+    Exercício 06:
+    Escreva uma função chamada `calcularMediaAritmetica()` que receba um array 
+    de números como parâmetro, calcule a média aritmética desses números e 
+    exiba.
+    */
+
+    function calcularMediaAritmetica(arrayNum) {
+        var soma = 0; // Acumulador
+        for (let i = 0; i < arrayNum.length; i++) {
+            soma += arrayNum[i];
+            console.log(i, soma)
+        }
+        media = soma / arrayNum.length;
+        document.write(`A média é ${media}.`);
+    }
+
+    // Teste de unitário
+    calcularMediaAritmetica([1, 2, 3, 4, 5])
+</script>

@@ -5,9 +5,13 @@
     parâmetro e imprima essa string.
     */
 
-    function imprimirMensagem(mensagem) {
-        document.write(mensagem);
+    function imprimirMensagem(mensagem, html = true) {
+        if (html) {
+            document.write(`A mensagem enviada foi ${mensagem}.`);
+        } else {
+            console.log(`A mensagem enviada foi ${mensagem}.`);
+        }
     }
 
-    imprimirMensagem('Bicicleta');
+    imprimirMensagem('Minha mensagem');
 </script>

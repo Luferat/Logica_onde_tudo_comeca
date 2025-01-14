@@ -1,0 +1,18 @@
+<script>
+    /*
+    Exercício 05:
+    Escreva uma função chamada `calcularFatorial()` que receba um número como 
+    parâmetro e calcule o fatorial desse número e exiba o resultado.
+    */
+
+    function calcularFatorial(num) {
+        var fatorial = 1;
+        for (let i = num; i > 1; i--) {
+            fatorial *= i;
+        }
+        document.write(`O fatorial de ${num} é ${fatorial}.`);
+    }
+
+    // Teste unitário
+    calcularFatorial(5);
+</script>
