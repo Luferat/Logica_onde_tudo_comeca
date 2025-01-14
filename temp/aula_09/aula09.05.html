@@ -1,0 +1,21 @@
+<script>
+    /*
+    Exercício 5:
+    Escreva uma função chamada calcularPotencia, que receba a base e o expoente
+    como parâmetros, e retorne o resultado da base elevada ao expoente. Em 
+    seguida, crie uma função chamada exibirPotencia, que chame a função 
+    calcularPotencia, e exiba o resultado retornado.
+    */
+
+    function calcularPotencia(base, expoente) {
+        return base ** expoente;
+    }
+
+    function exibirPotencia(base, expoente) {
+        var resultado = calcularPotencia(base, expoente);
+        document.write("O resultado é: " + resultado);
+    }
+
+    // Exemplo de uso:
+    exibirPotencia(2, 3);
+</script>
