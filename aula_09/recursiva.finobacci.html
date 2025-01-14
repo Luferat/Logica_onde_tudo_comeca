@@ -1,0 +1,15 @@
+<script>
+    function fibonacci(n) {
+        // Caso base: fibonacci(0) = 0 e fibonacci(1) = 1
+        if (n <= 1) {
+            return n;
+        }
+        // Caso recursivo: fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    // Exibindo os primeiros 10 valores da sequência de Fibonacci
+    for (let i = 0; i < 10; i++) {
+        console.log(fibonacci(i));
+    }
+</script>

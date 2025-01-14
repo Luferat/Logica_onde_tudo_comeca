@@ -1,0 +1,30 @@
+<script>
+
+    // Retorna o maior entre dois números.
+    function calculaMaior(x, y) {
+        let maior;
+        if (x > y) {
+            maior = x;
+        } else {
+            maior = y;
+        }
+        return maior;
+    }
+
+    // Recebe os dados do usuário (Procedure)
+    function recebeDados() {
+        let x, y;
+        x = +prompt("Digite o primeiro valor")
+        y = +prompt("Digite o segundo valor")
+        imprimirDados(x, y);
+    }
+
+    // Obtém o maior de `calculaMaior()` e exibe (Procedure)
+    function imprimirDados(a, b) {
+        let maior = calculaMaior(a, b);
+        document.write("O maior valor entre " + a + " e " + b + " é " + maior);
+    }
+
+    // Executa o aplicativo
+    recebeDados();
+</script>
