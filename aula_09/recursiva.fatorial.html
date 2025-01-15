@@ -1,0 +1,17 @@
+<script>
+    /*
+    Usando recursividade para para calcular o fatorial de um número.
+    */
+    function calcularFatorial(num) {
+        if (num === 1) {
+            return 1; // Caso base
+        } else {
+            return num * calcularFatorial(num - 1); // Caso recursivo
+        }
+    }
+
+    // Executando a função com um exemplo
+    entrada = 5;
+    fatorial = calcularFatorial(entrada)
+    document.write(`O fatorial de ${entrada} é ${fatorial}.`);
+</script>

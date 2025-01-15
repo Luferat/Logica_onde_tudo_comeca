@@ -1,15 +1,21 @@
 <script>
+    /*
+    Recursividade:
+    Um exemplo clássico de função recursiva é a função que calcula a sequência 
+    de Fibonacci. A sequência de Fibonacci é uma série de números onde cada 
+    número é a soma dos dois anteriores, começando com 0 e 1. Neste exemplo, 
+    calculamos os 10 primeiros números da sequência.
+    */
+
     function fibonacci(n) {
-        // Caso base: fibonacci(0) = 0 e fibonacci(1) = 1
         if (n <= 1) {
-            return n;
+            return n; // Caso base
+        } else {
+            return fibonacci(n - 1) + fibonacci(n - 2); // Caso recursivo
         }
-        // Caso recursivo: fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)
-        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
-    // Exibindo os primeiros 10 valores da sequência de Fibonacci
-    for (let i = 0; i < 10; i++) {
-        console.log(fibonacci(i));
+    for (var i = 0; i < 10; i++) {
+        document.write(fibonacci(i) + "<br>");
     }
 </script>

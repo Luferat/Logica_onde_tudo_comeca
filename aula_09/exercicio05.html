@@ -1,0 +1,16 @@
+<script>
+    // Função para calcular a potência usando a bilbioteca Math.
+    function calcularPotencia(base, expoente) {
+        return Math.pow(base, expoente);
+    }
+
+    // Função para exibir a potência
+    function exibirPotencia(base, expoente) {
+        let resultado = calcularPotencia(base, expoente);
+        document.write(`O resultado de ${base} elevado a ${expoente} é ${resultado}.<br>`);
+    }
+
+    // Exemplo de uso
+    exibirPotencia(2, 3); // Saída: O resultado de 2 elevado a 3 é 8.
+    exibirPotencia(5, 4); // Saída: O resultado de 5 elevado a 4 é 625.
+</script>

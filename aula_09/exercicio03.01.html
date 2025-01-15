@@ -1,0 +1,26 @@
+<script>
+    /*
+    Exercício 3:
+    Escreva uma função chamada calcularAreaRetangulo, que receba a base e a
+    altura de um retângulo como parâmetros, e retorne a área desse retângulo.
+    Em seguida, crie uma função chamada calcularAreaTriangulo, que chame a
+    função calcularAreaRetangulo, passando a base e a altura de um triângulo
+    retângulo e divida o resultado retornado por 2.
+    By Guilerme
+    */
+
+    function calcularAreaRetangulo(base, altura) {
+        area = base * altura
+        return area
+
+    }
+
+    function calcularAreaTriangulo(base, altura) {
+        areaTraingulo = calcularAreaRetangulo(base, altura) / 2
+        document.write(`A area do triangulo retangulo com base ${base} e
+      altura ${altura} é ${areaTraingulo}.`)
+    }
+
+    calcularAreaTriangulo(3, 5)
+
+</script>

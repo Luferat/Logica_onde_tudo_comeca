@@ -1,0 +1,21 @@
+<script>
+    /*
+    Exercício 1:
+    Escreva uma função chamada somarNumeros, que receba dois números como 
+    parâmetros, e retorne a soma desses números. Em seguida, crie uma função 
+    chamada dobrarSoma, que chame a função somarNumeros, e multiplique o 
+    resultado retornado por 2.
+    */
+    function somarNumeros(num1, num2) {
+        return num1 + num2;
+    }
+
+    function dobrarSoma(num1, num2){
+        return somarNumeros(num1, num2) * 2;
+    }
+
+    val1 = 10;
+    val2 = 50;
+    var resultado = dobrarSoma(val1, val2);
+    document.write(`O dobro da soma entre ${val1} e ${val2} é ${resultado}.`);
+</script>

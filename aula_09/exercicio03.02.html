@@ -1,0 +1,24 @@
+<script>
+
+    /*
+    By Eduardo
+    */
+ 
+    // Função para calcular a área de um retângulo
+function calcularAreaRetangulo(base, altura) {
+    return base * altura;
+}
+ 
+// Função para calcular a área de um triângulo retângulo
+function calcularAreaTriangulo(base, altura) {
+    // Chama a função calcularAreaRetangulo e divide o resultado por 2
+    return calcularAreaRetangulo(base, altura) / 2;
+}
+ 
+// Exemplo de uso
+let base = 10;
+let altura = 5;
+console.log("Área do retângulo:", calcularAreaRetangulo(base, altura)); // RESULTADO: 50
+console.log("Área do triângulo:", calcularAreaTriangulo(base, altura)); // RESULTADO: 25
+ 
+</script>

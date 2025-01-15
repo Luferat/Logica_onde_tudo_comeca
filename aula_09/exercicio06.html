@@ -1,0 +1,25 @@
+<script>
+    /*
+    Exercício 6:
+    Escreva uma função chamada calcularMedia, que receba um array de números 
+    como parâmetro, e retorne a média aritmética desses números. Em seguida, 
+    crie uma função chamada verificarMediaAprovacao, que chame a função 
+    calcularMedia, e verifique se a média é maior ou igual a 7. A função 
+    verificarMediaAprovacao deve retornar a mensagem "Aprovado" se a média for 
+    maior ou igual a 7, ou "Reprovado", caso contrário.
+    */
+
+    function calcularMedia(arrayNum) {
+        var soma = 0;
+        for (var i = 0; i < arrayNum.length; i++)
+            soma += arrayNum[i];
+        return soma / arrayNum.length;
+    }
+
+    function verificarMediaAprovacao(arrayNum) {
+        if (calcularMedia(arrayNum) >= 7) return "Aprovado";
+        else return "Reprovado";
+    }
+
+    document.write(`Você está ${verificarMediaAprovacao([8, 8, 8])}.`);
+</script>

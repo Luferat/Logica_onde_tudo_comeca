@@ -1,0 +1,28 @@
+<script>
+    /*
+    Exercício 2:
+    Escreva uma função chamada verificarMaiorNumero, que receba dois números 
+    como parâmetros, e retorne o maior número entre eles. Em seguida, crie uma 
+    função chamada adicionar10, que chame a função verificarMaiorNumero, e 
+    adicione 10 ao resultado retornado.
+    */
+    function verificarMaiorNumero(num1, num2) {
+
+        if (num1 > num2) {
+            return num1;
+        } else {
+            return num2;
+        }
+
+        // Usando operador ternário.
+        // return (num1 > num2) ? num1 : num2;
+    }
+
+    function adicionar10(val1, val2) {
+        return verificarMaiorNumero(val1, val2) + 10;
+    }
+
+    val1 = 5;
+    val2 = 555;
+    document.write(`O maior + 10 entre ${val1} e ${val2} é ${adicionar10(val1, val2)}.`);
+</script>

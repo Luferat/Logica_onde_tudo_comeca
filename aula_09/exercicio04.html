@@ -1,0 +1,23 @@
+<script>
+    /*
+    Exercício 4:
+    Escreva uma função chamada inverterString, que receba uma string como 
+    parâmetro, e retorne a mesma string, porém invertida. Em seguida, crie uma 
+    função chamada exibirStringInvertida, que chame a função inverterString e 
+    exiba o resultado retornado.
+    */
+
+    function inverterString(string) {
+        var inv = '';
+        for (let i = string.length - 1; i >= 0; i--) {
+            inv += string[i];
+        }
+        return inv;
+    }
+
+    function exibirStringInvertida(string) {
+        document.write(inverterString(string));
+    }
+
+    exibirStringInvertida('minhoca');
+</script>
