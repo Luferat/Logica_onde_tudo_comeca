@@ -1,0 +1,21 @@
+<script>
+    function pesquisarArray(array, valor) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] === valor) {
+                return i; // Valor encontrado, retorna o índice correspondente
+            }
+        }
+        return -1; // Valor não encontrado
+    }
+
+    // Exemplo de uso:
+    const meuArray = [10, 20, 30, 40, 50];
+    const valorProcurado = 55;
+    
+    const indiceEncontrado = pesquisarArray(meuArray, valorProcurado);
+    if (indiceEncontrado !== -1) {
+        document.write(`O valor ${valorProcurado} foi encontrado no índice ${indiceEncontrado}.`);
+    } else {
+        document.write(`O valor ${valorProcurado} não foi encontrado no array.`);
+    }
+</script>

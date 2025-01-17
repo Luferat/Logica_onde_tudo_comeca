@@ -1,0 +1,35 @@
+<script>
+    /*
+    Exercício 2:
+    Estamos organizando um encontro de colaboradores da organização. Temos uma 
+    lista com o nome de 10 colaboradores e os números dos assentos de cada um 
+    no local do evento. Crie um programa que recebe o nome do colaborador, 
+    localiza o seu assento e imprime na tela o nome e o número do assento.
+    */
+
+    var colaboradores = [
+        ['Joca', '1a'],
+        ['Maria', '1b'],
+        ['Pedro', '2c'],
+        ['Gabriel', '2d'],
+        ['Manoel', '2a'],
+        ['Ana', '3b'],
+        ['Carlos', '3c'],
+        ['Beatriz', '3d'],
+        ['Lucas', '4a'],
+        ['Fernanda', '4b']
+    ];
+
+    var colaborador = prompt(`Digite o nome do colaborador:`);
+
+    for (i = 0; i < colaboradores.length; i++){
+
+        // Usando `string.toLowerCase()` para otimizar a pesquisa.
+        if (colaboradores[i][0].toLowerCase() === colaborador.toLowerCase()) {
+            document.write(`${colaboradores[i][0]} está no assento ${colaboradores[i][1]}.<br>`)
+            break;
+        }
+
+    }
+
+</script>

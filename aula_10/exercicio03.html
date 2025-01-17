@@ -1,0 +1,47 @@
+<script>
+    /*
+    Exercício 3:
+    Crie um algoritmo que permita ao usuário inserir uma lista de números, 
+    separados por vírgula, que serão adicionados a um array. Em seguida, 
+    pesquisar quantas vezes um determinado número, também inserido pelo 
+    usuário, aparece na lista. 
+    */
+
+    // Função que recebe uma lista de números, converte para uma array de números.
+    function geraArray(listaParaTratar) {
+
+        // Converte a lista em um array
+        var arrNum = listaParaTratar.split(',');
+
+        // Converter cada item da array em número
+        for (i = 0; i < arrNum.length; i++) {
+            arrNum[i] = Number(arrNum[i]);
+        }
+
+        // Retorna o array de números
+        return arrNum;
+    }
+
+    // Obtém a lista de números do usuário
+    var lista = prompt(`Digite uma lista de números separados por ",":`);
+
+    // Obtém o número a ser pesquisado, do usuário
+    var numero = Number(prompt(`Digite um número para pesquisar:`));
+
+    // Obtém um array com os números do usuário
+    arrayNumeros = geraArray(lista);
+
+    // Pesquisa
+    var quantas = 0;
+    for (i = 0; i < arrayNumeros.length; i++) {
+
+        if (arrayNumeros[i] === numero) {
+            quantas++;
+        }
+
+    }
+
+    // Saída
+    document.write(`O número ${numero} foi encontrado ${quantas} vez(es).`);
+
+</script>

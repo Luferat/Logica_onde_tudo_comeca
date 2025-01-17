@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Notas</title>
+    <script>
+    /*
+    Contexto:
+    Ao final do ano letivo, uma escola de ensino médio finalizou o período de
+    provas e os professores já concluíram o lançamento das notas dos alunos.
+    Infelizmente, o sistema de lançamento de notas apresentou uma falha e todos
+    os alunos aparecem como reprovados. Você foi chamado às pressas pelo
+    diretor da escola para auxiliar na solução dessa situação
+ 
+    Desafio:
+    Desenvolva um programa onde os alunos, a partir de um menu e por meio de um
+    processo de escolha, deverão informar qual é a matéria que querem saber a
+    nota e o sistema deverá retornar a nota e avaliar se ele está aprovado,
+    reprovado ou em recuperação.
+ 
+     - O aluno pode digitar o número da mátéria (começando por 1) ou o nome;
+     - Situação:
+         - Aprovado se tem nota maior ou igual a 7;
+         - Recuperação se tem nota entre 5 e 6.9;
+         - Reprovador se tem nota abaixo de 5.
+    */
+
+        function verificarNota() {
+            const materias = {
+                1: { nome: "Matemática", nota: 8.0 },
+                2: { nome: "Português", nota: 6.5 },
+                3: { nome: "História", nota: 7.3 },
+                4: { nome: "Geografia", nota: 3.5 },
+                5: { nome: "Educação Física", nota: 5.0 }
+            };
+
+            let escolha = prompt(
+                "Escolha uma das seguintes matérias:\n" +
+                "1 - Matemática\n" +
+                "2 - Português\n" +
+                "3 - História\n" +
+                "4 - Geografia\n" +
+                "5 - Educação Física"
+            );
+
+            let materiaEscolhida = null;
+
+            if (materias[escolha]) {
+                materiaEscolhida = materias[escolha];
+            } else {
+                for (let key in materias) {
+                    if (materias[key].nome.toLowerCase() === escolha.toLowerCase()) {
+                        materiaEscolhida = materias[key];
+                        break;
+                    }
+                }
+            }
+
+            if (materiaEscolhida) {
+                let situacao;
+                if (materiaEscolhida.nota >= 7) {
+                    situacao = "Aprovado";
+                } else if (materiaEscolhida.nota >= 5) {
+                    situacao = "Recuperação";
+                } else {
+                    situacao = "Reprovado";
+                }
+
+                alert(`${materiaEscolhida.nome}, nota ${materiaEscolhida.nota} - ${situacao}!`);
+            } else {
+                alert("Matéria inválida! Tente novamente.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Avaliação de Notas</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Matemática</th>
+                <th>Português</th>
+                <th>História</th>
+                <th>Geografia</th>
+                <th>Educação Física</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>8.0</strong></td>
+                <td>6.5</td>
+                <td>7.3</td>
+                <td>3.5</td>
+                <td>5.0</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button onclick="verificarNota()">Verificar Nota</button>
+</body>
+</html>

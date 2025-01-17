@@ -1,0 +1,25 @@
+<script>
+    // Função para contar a ocorrência de um número em um array
+    function contarOcorrencias(array, numero) {
+        let contador = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] == numero) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    // Solicita ao usuário para inserir uma lista de números separados por vírgula
+    let listaNumeros = prompt("Insira uma lista de números separados por vírgula:");
+    let arrayNumeros = listaNumeros.split(',').map(Number);
+
+    // Solicita ao usuário para inserir o número a ser pesquisado
+    let numeroPesquisa = prompt("Insira o número a ser pesquisado:");
+
+    // Conta quantas vezes o número aparece na lista
+    let ocorrencias = contarOcorrencias(arrayNumeros, numeroPesquisa);
+
+    // Exibe o resultado
+    alert("O número " + numeroPesquisa + " aparece " + ocorrencias + " vezes na lista.");
+</script>

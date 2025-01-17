@@ -1,0 +1,23 @@
+<script>
+    /*
+    Exercício 1:
+    Crie um algoritmo que permita ao usuário pesquisar um nome em uma lista de 
+    alunos e exibir uma mensagem indicando se o nome foi encontrado ou não.
+    */
+
+    var listaNomes = ['Joca', 'Maria', 'Pedro', 'Gabriel', 'Manoel'];
+    var nome = prompt('Digite o nome para pesquisar:');
+    var achei = false;
+
+    for (i = 0; i < listaNomes.length; i++) {
+        if (listaNomes[i].toUpperCase() === nome.toUpperCase()) {
+            achei = true;
+        }
+    }
+
+    if (achei) {
+        document.write('Achei');
+    } else {
+        document.write('Não achei');
+    }
+</script>
