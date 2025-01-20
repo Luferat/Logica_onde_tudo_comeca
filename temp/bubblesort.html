@@ -1,0 +1,29 @@
+<script>
+
+    function bubbleSort(arr) {
+        let n = arr.length;                         // Conta itens da coleção
+        for (let i = 0; i < n - 1; i++) {           // Itera a coleção
+            for (let j = 0; j < n - 1 - i; j++) {   // Itera a coleção várias vezes
+                if (arr[j] > arr[j + 1]) {          // Se o item atua é maior que o seguinte
+                    let temp = arr[j];              // Armazena o item atual em uma temporária
+                    arr[j] = arr[j + 1];            // Armazena o seguinte no atual
+                    arr[j + 1] = temp;              // Armazena o temporário no seguinte
+                }
+            }
+        }
+        return arr;
+    }
+
+    // Exemplo de uso
+    let array = [64, 34, 25, 12, 22, 11, 90];
+    console.log("Array ordenado: " + bubbleSort(array));
+
+    // Exemplo com palavras
+    array = ['casa', 'moto', 'biscoito', 'minhoca', 'união', 'peruca', 'peteca']
+    console.log("Array ordenado: " + bubbleSort(array));
+
+    // Exemplo com acentos e um problema
+    array = ['águia', 'angulo', 'água', 'arqueologo']
+    console.log("Array ordenado: " + bubbleSort(array));
+
+</script>
