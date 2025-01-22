@@ -1,13 +1,13 @@
 <script>
 
     function bubbleSort(arr) {
-        let n = arr.length;                         // Conta itens da coleção
-        for (let i = 0; i < n - 1; i++) {           // Itera a coleção
-            for (let j = 0; j < n - 1 - i; j++) {   // Itera a coleção várias vezes
-                if (arr[j] > arr[j + 1]) {          // Se o item atua é maior que o seguinte
-                    let temp = arr[j];              // Armazena o item atual em uma temporária
-                    arr[j] = arr[j + 1];            // Armazena o seguinte no atual
-                    arr[j + 1] = temp;              // Armazena o temporário no seguinte
+        let n = arr.length;                         // Conta itens da coleção → n=7
+        for (let i = 0; i < n - 1; i++) {           // Itera a coleção → i=0,,,,,,i=1
+            for (let j = 0; j < n - 1 - i; j++) {   // Itera a coleção várias vezes → j=0, j=1
+                if (arr[j] > arr[j + 1]) {          // Se o item atua é maior que o seguinte → [0] > [1]?, [1] > [2]?
+                    let temp = arr[j];              // Armazena o item atual em uma temporária → temp=[0], temp=[1]
+                    arr[j] = arr[j + 1];            // Armazena o seguinte no atual → [0]=[1],[1]=[2]
+                    arr[j + 1] = temp;              // Armazena o temporário no seguinte → [1]=temp, [2]=temp
                 }
             }
         }
@@ -23,7 +23,12 @@
     console.log("Array ordenado: " + bubbleSort(array));
 
     // Exemplo com acentos e um problema
-    array = ['águia', 'angulo', 'água', 'arqueologo']
+    array = ['águia', 'ângulo', 'água', 'arqueologo']
     console.log("Array ordenado: " + bubbleSort(array));
+
+    // Exemplo sem acentos
+    array = ['aguia', 'angulo', 'agua', 'arqueologo']
+    console.log("Array ordenado: " + bubbleSort(array));
+
 
 </script>

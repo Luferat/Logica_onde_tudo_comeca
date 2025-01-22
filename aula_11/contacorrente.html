@@ -1,0 +1,105 @@
+<script>
+
+    // Cria globais com o valor inicial `undefined`
+    var numero, saldoInicial, tipo, limite;
+
+    // Função invocada dentro de imprimirSaldo() para voltar as opções de operação.
+    function inicio() {
+
+        let menu = `
+Escolha uma opção:
+
+    [1] Abertura de conta corrente.
+    [2] Saque.
+    [3] Depósito. 
+    [4] Sair.
+    `;
+
+        opcao = parseInt(prompt(menu));
+
+        if (opcao === 1) {
+            abrirConta();
+        } else if (opcao === 2 || opcao === 3) {
+            operacionar(opcao)
+        } else if (opcao === 4) {
+            console.log('Obrigado! Até a próxima!');
+            return;
+        } else {
+            alert(`Escolha uma opção válida!`);
+            inicio();
+        }
+    }
+
+    // Permite escolher as operações saque e depósito da conta. (Fabricio)
+    function operacionar(opcao) {
+
+        // Se não tem conta chama `abrirConta()`
+        // Se opcao == 2 chama `sacar()`
+        // Se opcao == 3 chama `depositar()`
+        sacar();
+    }
+
+    // Inicializa a conta. (Rodrigo)
+    function abrirConta() {
+        numero = prompt("Informe o número da conta:");
+        saldoInicial = parseFloat(prompt("Informe o saldo inicial da conta:"));
+        tipo = parseInt(prompt("Informe o tipo da conta:\n0 - Especial\n1 - Comum"));
+
+        if (tipo === 0) {
+            limite = parseFloat(prompt("Informe o limite da conta (apenas para conta especial):"));
+        } else {
+            limite = 0; // Conta comum não possui limite
+        }
+
+        limiteUsado = 0; // Nenhum limite usado inicialmente
+        alert(`Conta aberta com sucesso!\nSaldo Total Disponível: R$ ${(saldoInicial + limite).toFixed(2)}`);
+        imprimirSaldo("Abertura da Conta", saldoInicial);
+    }
+
+    // Retira do ccsaldo da conta observando se há fundos suficientes. (Eduardo)
+    function sacar() {
+        const valorSaque = parseFloat(prompt("Informe o valor do saque:"));
+
+        if (tipo === 0) { // Conta especial
+            const saldoTotalDisponivel = saldoInicial + (limite - limiteUsado);
+            if (saldoTotalDisponivel >= valorSaque) {
+                if (saldoInicial >= valorSaque) {
+                    saldoInicial -= valorSaque;
+                } else {
+                    const diferenca = valorSaque - saldoInicial;
+                    saldoInicial = 0;
+                    limiteUsado += diferenca;
+                }
+                alert(`Saque realizado com sucesso!\nValor sacado: R$ ${valorSaque.toFixed(2)}\nSaldo Total Disponível: R$ ${saldoTotalDisponivel.toFixed(2)}`);
+            } else {
+                alert("Saldo insuficiente para realizar o saque!");
+            }
+        } else { // Conta comum
+            if (saldoInicial >= valorSaque) {
+                saldoInicial -= valorSaque;
+                const saldoTotalDisponivel = saldoInicial + limite;
+                alert(`Saque realizado com sucesso!\nValor sacado: R$ ${valorSaque.toFixed(2)}\nSaldo Total Disponível: R$ ${saldoTotalDisponivel.toFixed(2)}`);
+            } else {
+                alert("Saldo insuficiente para realizar o saque!");
+            }
+        }
+        imprimirSaldo("Saldo atual", -valorSaque);
+    }
+
+    // Adiciona valor ao saldo atual da conta. (Pedro)
+    function depositar() {
+        console.log('Depositando na conta');
+    }
+
+    // Mostra, na tela, o saldo e o limite disponível. (Guilerme)
+    function imprimirSaldo(menssagem, saldoInicial) {
+
+        // Mostra a mensagem e o valor de `saldoInicial`...
+
+        inicio();
+
+    }
+
+    inicio();
+
+</script>
