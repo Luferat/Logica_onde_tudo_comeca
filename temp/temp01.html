@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integração HTML / JavaScript</title>
+</head>
+
+<body>
+
+    <h1>Lendo dados de um formulário</h1>
+    <p>Este exemplo demonstra uma forma prática de ler os dados de um campo de formulário HTML.</p>
+    <p>Em seguida, vamos exibir os dados preenchidos no próprio HTML.</p>
+
+    <!-- Formulário -->
+    <form action="/" method="post" id="meuForm">
+
+        <p>
+            <label for="inputNome">Seu nome:</label>
+            <input type="text" name="nome" id="inputNome">
+        </p>
+
+        <p>
+            <label for="inputEmail">Seu e-mail:</label>
+            <input type="email" name="email" id="inputEmail">
+        </p>
+
+        <p>
+            <label for="inputNascimento">Data de nascimento:</label>
+            <input type="date" name="nascimento" id="inputNascimento">
+        </p>
+
+        <p>
+            <label>Opção de pagamento:</label>
+            <label for="inputOpcaoDinheiro">
+                <input type="radio" name="opcao" id="inputOpcaoDinheiro" value="dinheiro">
+                Dinheiro
+            </label>
+            <label for="inputOpcaoCredito">
+                <input type="radio" name="opcao" id="inputOpcaoCredito" value="credito">
+                Crédito
+            </label>
+            <label for="inputOpcaoDebito">
+                <input type="radio" name="opcao" id="inputOpcaoDebito" value="debito">
+                Débito
+            </label>
+            <label for="inputOpcaoPix">
+                <input type="radio" name="opcao" id="inputOpcaoPix" value="pix">
+                PIX
+            </label>
+        </p>
+
+        <p>
+            <button type="submit">Cadastrar</button>
+        </p>
+
+    </form>
+
+    <!-- DIV onde aparecerá a resposta do formulário -->
+    <div id="resposta"></div>
+
+    <!-- JavaScript que lê os dados do formulário -->
+    <script>
+
+        // Localizando o formulário
+        var form = document.querySelector('#meuForm');
+
+        // Localizando a div de resposta
+        var resposta = document.querySelector('#resposta');
+
+        function lerForm(event) {
+            // Previne o envio padrão do formulário
+            event.preventDefault();
+
+            // Capturando os valores dos campos
+            var nome = document.querySelector('#inputNome').value;
+            var email = document.querySelector('#inputEmail').value;
+            var nascimento = document.querySelector('#inputNascimento').value;
+            var opcao = document.querySelector('input[name="opcao"]:checked').value;
+
+            // Armazenando os valores em um array
+            var dadosFormulario = [nome, email, nascimento, opcao];
+
+            // Exibindo os valores no console (ou você pode fazer outra coisa com eles)
+            console.log(dadosFormulario);
+
+            // Chama a função que exibe a resposta
+            exibeResposta(dadosFormulario);
+        }
+
+        function exibeResposta(array){
+            html = `
+            <hr>
+            <h2>Resposta do formulário</h2>
+            <ul>
+                <li><strong>Nome:</strong> ${array[0]}</li>
+                <li><strong>E-mail:</strong> ${array[1]}</li>
+                <li><strong>Nascimento:</strong> ${array[2]}</li>
+                <li><strong>Pagamento:</strong> ${array[3]}</li>
+            </ul>            
+            `;
+            resposta.innerHTML = html;
+        }
+
+        // Adicionando evento de escuta para o envio do formulário
+        form.addEventListener('submit', lerForm);
+    </script>
+
+</body>
+
+</html>
