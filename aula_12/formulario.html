@@ -1,0 +1,141 @@
+<!DOCTYPE html><!-- DTD -->
+<html lang="pt-BR"><!-- HTML começa aqui -->
+
+<head>
+    <meta charset="UTF-8"><!-- Conjunto de carcteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Responsividade -->
+    <title>Interação HTML / JS</title><!-- Título do documento -->
+</head>
+
+<body>
+
+    <h1>Interação HTML / JS</h1>
+
+    <form action="cadastro.php" method="post" id="formCadastro">
+
+        <h2>Formulário Cadastro</h2>
+
+        <p>
+            <label for="campoNome">Seu nome:</label>
+            <input type="text" name="nome" id="campoNome">
+        </p>
+
+        <p>
+            <label for="campoEmail">Seu email:</label>
+            <input type="email" name="email" id="campoEmail">
+        </p>
+
+        <p>
+            <label for="campoNascimento">Data de nascimento:</label>
+            <input type="date" name="nascimento" id="campoNascimento">
+        </p>
+
+        <p>
+            Forma de pagamento:
+            <label><input type="radio" name="pagamento" id="campoPag1" value="dinheiro"> Dinheiro</label>
+            <label><input type="radio" name="pagamento" id="campoPag2" value="credito"> Crédito</label>
+            <label><input type="radio" name="pagamento" id="campoPag3" value="debito"> Débito</label>
+            <label><input type="radio" name="pagamento" id="campoPag4" value="pix"> PIX</label>
+        </p>
+
+        <p>
+            <button type="submit">Fazer cadastro</button>
+        </p>
+
+    </form>
+
+    <div id="resposta"></div>
+
+    <script>
+        /* Todas as funções do aplicativo */
+
+        // Lê os dados do formulário e armazena em um array
+        function lerCadastro(event) {
+
+            // Bloqueia o comportamento padrão do elemento no HTML
+            event.preventDefault();
+
+            // Receber os dados dos campos
+            let nome = document.querySelector('#campoNome').value;
+            let email = document.querySelector('#campoEmail').value;
+            let nascimento = document.querySelector('#campoNascimento').value;
+            let pagamento = document.querySelector('input[name=pagamento]:checked').value;
+
+            // Debug: verifica os dados recebidos
+            // console.log(nome, email, nascimento, pagamento);
+
+            // Armazenar os dados preenchidos em um array
+            let formDados = [
+                nome,
+                email,
+                nascimento,
+                pagamento
+            ];
+
+            // Debug: verifica os dados recebidos
+            // console.log(formDados);
+
+            // Grava os dados no banco de dados local
+            let meuJSON = JSON.stringify(formDados);
+            window.localStorage.setItem('dados', meuJSON);
+
+            // chama a função que mostra os dados cadastrados no HTML
+            mostraDados(formDados);
+        }
+
+        function mostraDados(array) {
+
+            // Melhora a exibição do pagamento
+            let pagamento = '';
+            switch (array[3]) {
+                case 'dinheiro': pagamento = "Dinheiro"; break;
+                case 'credito': pagamento = "Crédito"; break;
+                case 'debito': pagamento = "Débito"; break;
+                case 'pix': pagamento = "PIX";
+            }
+
+            // Melhora a data de nascimento de ISO para pt-BR
+            let partes = array[2].split('-');
+            let nascimento = `${partes[2]}/${partes[1]}/${partes[0]}`;
+            // console.log(partes, nascimento);
+
+            let mostra = `
+            
+            <hr>
+            <h2>Dados Cadastrais</h2>
+            <ul>
+                <li><strong>Nome:</strong> ${array[0]}</li>
+                <li><strong>E-mail:</strong> ${array[1]}</li>
+                <li><strong>Nascimento:</strong> ${nascimento}</li>
+                <li><strong>Forma de pagamento:</strong> ${pagamento}</li>
+            </ul>   
+            
+            `;
+
+            // Mostra os dados no documento no elemento com id=divResposta
+            divResposta.innerHTML = mostra;
+
+        }
+    </script>
+
+    <script>
+
+        // Localizar os elementos do HTML com quem o JS vai interagir
+        var form = document.querySelector('#formCadastro');
+        var divResposta = document.querySelector('#resposta');
+
+        // Se tem dados no banco de dados local, exibe
+        let dadosJSON = localStorage.getItem('dados')
+        if (dadosJSON) {
+            dados = JSON.parse(localStorage.getItem('dados'))
+            mostraDados(dados);
+        }
+
+        // Detecta o envio do formulário
+        form.addEventListener('submit', lerCadastro);
+
+    </script>
+
+</body>
+
+</html>

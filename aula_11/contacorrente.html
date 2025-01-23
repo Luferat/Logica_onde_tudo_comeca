@@ -6,23 +6,26 @@
     // Função invocada dentro de imprimirSaldo() para voltar as opções de operação.
     function inicio() {
 
+        opcaoAbrir = '';
+        if(numero == undefined)
+            opcaoAbrir = `\n    [1] Abertura de conta corrente.`;
+
         let menu = `
 Escolha uma opção:
-
-    [1] Abertura de conta corrente.
+    ${opcaoAbrir}
     [2] Saque.
     [3] Depósito. 
     [4] Sair.
-    `;
+        `;
 
         opcao = parseInt(prompt(menu));
 
-        if (opcao === 1) {
+        if (opcao === 1 && numero == undefined) {
             abrirConta();
         } else if (opcao === 2 || opcao === 3) {
             operacionar(opcao)
         } else if (opcao === 4) {
-            console.log('Obrigado! Até a próxima!');
+            alert('Obrigado! Até a próxima!');
             return;
         } else {
             alert(`Escolha uma opção válida!`);
@@ -33,10 +36,16 @@ Escolha uma opção:
     // Permite escolher as operações saque e depósito da conta. (Fabricio)
     function operacionar(opcao) {
 
-        // Se não tem conta chama `abrirConta()`
-        // Se opcao == 2 chama `sacar()`
-        // Se opcao == 3 chama `depositar()`
-        sacar();
+        // Se ainda não abriu a conta, deve abrir
+        if (numero == undefined) {
+            alert('Oooops! Abra sua conta primeiro clicando em OK.');
+            abrirConta();
+        } else if (opcao === 2) {
+            sacar();
+        } else {
+            depositar();
+        }
+
     }
 
     // Inicializa a conta. (Rodrigo)
@@ -53,7 +62,7 @@ Escolha uma opção:
 
         limiteUsado = 0; // Nenhum limite usado inicialmente
         alert(`Conta aberta com sucesso!\nSaldo Total Disponível: R$ ${(saldoInicial + limite).toFixed(2)}`);
-        imprimirSaldo("Abertura da Conta", saldoInicial);
+        inicio();
     }
 
     // Retira do ccsaldo da conta observando se há fundos suficientes. (Eduardo)
@@ -61,7 +70,7 @@ Escolha uma opção:
         const valorSaque = parseFloat(prompt("Informe o valor do saque:"));
 
         if (tipo === 0) { // Conta especial
-            const saldoTotalDisponivel = saldoInicial + (limite - limiteUsado);
+            const saldoTotalDisponivel = saldoInicial + (limite);
             if (saldoTotalDisponivel >= valorSaque) {
                 if (saldoInicial >= valorSaque) {
                     saldoInicial -= valorSaque;
@@ -70,7 +79,7 @@ Escolha uma opção:
                     saldoInicial = 0;
                     limiteUsado += diferenca;
                 }
-                alert(`Saque realizado com sucesso!\nValor sacado: R$ ${valorSaque.toFixed(2)}\nSaldo Total Disponível: R$ ${saldoTotalDisponivel.toFixed(2)}`);
+                alert(`Saque realizado com sucesso!\nValor sacado: R$ ${valorSaque.toFixed(2)}`);
             } else {
                 alert("Saldo insuficiente para realizar o saque!");
             }
@@ -78,23 +87,32 @@ Escolha uma opção:
             if (saldoInicial >= valorSaque) {
                 saldoInicial -= valorSaque;
                 const saldoTotalDisponivel = saldoInicial + limite;
-                alert(`Saque realizado com sucesso!\nValor sacado: R$ ${valorSaque.toFixed(2)}\nSaldo Total Disponível: R$ ${saldoTotalDisponivel.toFixed(2)}`);
+                alert(`Saque realizado com sucesso!\nValor sacado: R$ ${valorSaque.toFixed(2)}`);
             } else {
                 alert("Saldo insuficiente para realizar o saque!");
             }
         }
-        imprimirSaldo("Saldo atual", -valorSaque);
+        imprimirSaldo();
     }
 
     // Adiciona valor ao saldo atual da conta. (Pedro)
     function depositar() {
-        console.log('Depositando na conta');
+        const valorDeposito = parseInt(prompt('Digite o valor depositado:'));
+        saldoInicial += valorDeposito;
+        alert('Deposito efetuado com sucesso!');
+        imprimirSaldo();
     }
 
     // Mostra, na tela, o saldo e o limite disponível. (Guilerme)
-    function imprimirSaldo(menssagem, saldoInicial) {
+    function imprimirSaldo() {
 
-        // Mostra a mensagem e o valor de `saldoInicial`...
+        if (tipo === 0) {
+            saldoFinal = saldoInicial + limite;
+        } else {
+            saldoFinal = saldoInicial;
+        }
+
+        alert(`Saldo atualizado: ${saldoFinal}`)
 
         inicio();
 
